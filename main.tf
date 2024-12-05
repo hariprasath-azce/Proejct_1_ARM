@@ -86,7 +86,8 @@ resource "azurerm_linux_virtual_machine" "vm" {
 
   computer_name  = "Project1-vm"
   admin_username = "azureuser"
-  admin_password = "YourPassword1!" # Replace with a secure password
+  admin_password = "YourPassword1!" # Ensure this is secure
+  disable_password_authentication = false
 }
 
 # Storage Account

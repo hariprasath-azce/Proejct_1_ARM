@@ -97,7 +97,7 @@ resource "azurerm_linux_virtual_machine" "vm" {
   disable_password_authentication = false
 
 
-  custom_data = <<-EOT
+  custom_data = base64encode(<<-EOT
                 #cloud-config
                 packages:
                   - apache2

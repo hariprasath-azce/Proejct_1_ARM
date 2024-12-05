@@ -1,51 +1,39 @@
-# outputs.tf
-
+# Resource Group Name
 output "resource_group_name" {
-  value       = "Project1-resource-group"
-  description = "Name of the resource group"
+  value = azurerm_resource_group.rg.name
 }
 
+# Resource Group Location
+output "resource_group_location" {
+  value = azurerm_resource_group.rg.location
+}
+
+# Virtual Network Name
 output "virtual_network_name" {
   value = azurerm_virtual_network.vnet.name
-  description = "Name of the virtual network"
 }
 
-output "virtual_network_id" {
-  value = azurerm_virtual_network.vnet.id
-  description = "ID of the virtual network"
-}
-
-output "subnet_name" {
-  value = azurerm_subnet.subnet.name
-  description = "Name of the subnet"
-}
-
+# Subnet ID
 output "subnet_id" {
   value = azurerm_subnet.subnet.id
-  description = "ID of the subnet"
 }
 
-output "vm_name" {
-  value = azurerm_linux_virtual_machine.vm.name
-  description = "Name of the virtual machine"
-}
-
+# Virtual Machine Private IP Address
 output "vm_private_ip" {
   value = azurerm_linux_virtual_machine.vm.private_ip_address
-  description = "Private IP address of the virtual machine"
 }
 
+# Virtual Machine Public IP Address
 output "vm_public_ip" {
-  value = azurerm_network_interface.nic.private_ip_addresses[0]
-  description = "Public IP address of the virtual machine"
+  value = azurerm_public_ip.public_ip.ip_address
 }
 
+# Storage Account Name
 output "storage_account_name" {
-  value = azurerm_storage_account.example.name
-  description = "Name of the storage account"
+  value = azurerm_storage_account.storage.name
 }
 
+# Storage Account ID
 output "storage_account_id" {
-  value = azurerm_storage_account.example.id
-  description = "ID of the storage account"
+  value = azurerm_storage_account.storage.id
 }

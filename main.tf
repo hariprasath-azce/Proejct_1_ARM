@@ -95,7 +95,7 @@ resource "azurerm_linux_virtual_machine" "vm" {
   admin_username = "azureuser"
   admin_password = "YourPassword1!" # Ensure this is secure
   disable_password_authentication = false
-}
+
 
   custom_data = <<-EOT
                 #cloud-config

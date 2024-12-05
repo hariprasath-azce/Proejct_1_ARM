@@ -97,6 +97,17 @@ resource "azurerm_linux_virtual_machine" "vm" {
   disable_password_authentication = false
 }
 
+  custom_data = <<-EOT
+                #cloud-config
+                packages:
+                  - apache2
+                runcmd:
+                  - systemctl enable apache2
+                  - systemctl start apache2
+                  - systemctl status apache2  # Ensure Apache is running
+                  - ufw allow 'Apache'        # Allow HTTP through firewall (for Ubuntu/Debian)
+                EOT
+}
 # Storage Account
 resource "azurerm_storage_account" "example" {
   name                     = "storageaccountproj1hd123"

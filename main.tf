@@ -93,20 +93,20 @@ resource "azurerm_linux_virtual_machine" "vm" {
 
   computer_name  = "Project1-vm"
   admin_username = "azureuser"
-  admin_password = "YourPassword1!" # Ensure this is secure
+  admin_password = "YourPassword1!"  # Ensure this is secure
   disable_password_authentication = false
 
-
   custom_data = base64encode(<<-EOT
-                #cloud-config
-                packages:
-                  - apache2
-                runcmd:
-                  - systemctl enable apache2
-                  - systemctl start apache2
-                  - systemctl status apache2  # Ensure Apache is running
-                  - ufw allow 'Apache'        # Allow HTTP through firewall (for Ubuntu/Debian)
-                EOT
+    #cloud-config
+    packages:
+      - apache2
+    runcmd:
+      - systemctl enable apache2
+      - systemctl start apache2
+      - systemctl status apache2  # Ensure Apache is running
+      - ufw allow 'Apache'        # Allow HTTP through firewall (for Ubuntu/Debian)
+  EOT
+  )
 }
 # Storage Account
 resource "azurerm_storage_account" "example" {
